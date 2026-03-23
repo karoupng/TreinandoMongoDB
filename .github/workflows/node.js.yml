@@ -1,0 +1,26 @@
+name: Node.js CI 
+
+on:
+  push:
+    branches: [ "main", "principal" ] 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+
+    steps:
+    - uses: actions/checkout@v4 
+    
+    - name: Usar Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+
+    - name: Instalar dependências
+      run: npm install 
+
+    - name: Testar Conexão (Dry Run)
+      env:
+        MONGODB_URI: ${{ secrets.MONGODB_URI }} 
+      run: node db.js 
