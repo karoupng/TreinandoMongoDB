@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const {
   MongoClient,
-} = require("./learning-mongodb/node_modules/mongodb/mongodb");
+} = require("mongodb");
 
 // Único lugar com a string de conexão
 const url = process.env.MONGODB_URI;
